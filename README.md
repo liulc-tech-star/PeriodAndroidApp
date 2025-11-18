@@ -210,7 +210,7 @@ lutealPhase = 排卵期结束 到 下次经期前
 
 **liulc-tech-star**
 - GitHub: [@liulc-tech-star](https://github.com/liulc-tech-star)
-- Repository: [Period-Mobile](https://github.com/liulc-tech-star/Period-Mobile)
+- Repository: [Period-Mobile](https://github.com/liulc-tech-star/PeriodAndroidApp)
 
 ## 🙏 致谢
 
