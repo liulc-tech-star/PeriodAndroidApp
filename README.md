@@ -66,28 +66,7 @@
 - Android SDK 35
 - JDK 21
 
-### 克隆与构建
-```powershell
-# 克隆仓库
-git clone https://github.com/liulc-tech-star/Period-Mobile.git
-cd Period-Mobile
-
-# 设置 Java 环境（Windows PowerShell）
-$env:JAVA_HOME="C:\Program Files (x86)\Java\jdk-21.0.9.10-hotspot"
-
-# 构建 Debug APK
-.\gradlew assembleDebug
-```
-
 生成的 APK 位于：`app\build\outputs\apk\debug\app-debug.apk`
-
-### 安装运行
-```powershell
-# 安装到连接的设备
-.\gradlew installDebug
-
-# 或在 Android Studio 中直接运行
-```
 
 ## 📱 使用指南
 
