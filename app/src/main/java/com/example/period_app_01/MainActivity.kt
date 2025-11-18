@@ -25,44 +25,25 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-//import androidx.compose.ui.tooling.preview.Preview
 import com.example.period_app_01.ui.theme.Period_app_01Theme
 import com.example.period_app_01.data.DatesDatabase
-import com.example.period_app_01.data.DatesDao
 
-// ADD COMMENTS TO NEW FUNCTIONALITY
-// DEPLOY APP TO MOTOROLA
-// SETUP UNIT TESTS
-// REFACTOR ENTERDATE.KT (too much going on in single class)
-
-/*
- * main class, extends ComponentActivity class
- * what is ComponentActivity class?
- * what is an Activity?
+/**
+ * 主活动类，应用入口
+ * 负责初始化数据库和显示隐私政策对话框
  */
 class MainActivity : ComponentActivity() {
-    /*
-     * declaration of variable, DatesDao object, implements methods which allow access to data
-     * lateinit allows declaration of non-nullable property without performing null check (i.e. == null)
-     * why use laneinit in this context?
-     */
-    private lateinit var datesDao: DatesDao
     private lateinit var periodRecordDao: com.example.period_app_01.data.PeriodRecordDao
-    /*
-     * overrides onCreate method as defined in ComponentActivity class
-     * onCreate initializes an activity (e.g. initializing UI, preparing data, etc.)
-     * 
-     * what is an Activity?
+    
+    /**
+     * onCreate 初始化活动
+     * 初始化数据库和 UI
      */
     override fun onCreate(savedInstanceState: Bundle?) {
-        //
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        //
         val database = DatesDatabase.getDatabase(applicationContext)
-        //
-        datesDao = database.datesDao()
         periodRecordDao = database.periodRecordDao()
 
         // 检查是否首次启动
@@ -91,9 +72,7 @@ class MainActivity : ComponentActivity() {
                 if (showMainContent) {
                     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                         EnterDate(
-                            messageDate = resources.getString(R.string.enter_date),
                             modifier = Modifier.padding(innerPadding),
-                            datesDao = datesDao,
                             periodRecordDao = periodRecordDao
                         )
                     }
@@ -150,16 +129,6 @@ fun PrivacyPolicyDialog(onAccept: () -> Unit, context: Context) {
                 Text("同意并继续")
             }
         },
-        dismissButton = null // 不提供"拒绝"按钮，必须同意才能使用
+        dismissButton = null // 不提供“拒绝”按钮，必须同意才能使用
     )
 }
-
-/* below is preview, will use when working on more sophisticated UI
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Period_app_01Theme {
-        Greeting("Android")
-    }
-}
-*/

@@ -102,13 +102,11 @@ Period-Mobile/
 │   │   ├── EnterDate.kt                 # 主界面
 │   │   ├── CalendarView.kt              # 日历视图组件
 │   │   └── data/
-│   │       ├── Dates.kt                 # 旧数据模型（已废弃）
-│   │       ├── DatesDao.kt              # 旧DAO（已废弃）
-│   │       ├── PeriodRecord.kt          # 新经期记录模型
-│   │       ├── PeriodRecordDao.kt       # 新DAO
+│   │       ├── PeriodRecord.kt          # 经期记录模型
+│   │       ├── PeriodRecordDao.kt       # DAO接口
 │   │       ├── CycleAnalysis.kt         # 周期分析数据类
-│   │       ├── DatesDatabase.kt         # Room数据库
-│   │       └── OfflineDatesRepository.kt # 数据仓库
+│   │       ├── CycleCalculator.kt       # 周期计算工具
+│   │       └── DatesDatabase.kt         # Room数据库
 │   ├── src/main/assets/
 │   │   └── privacy.html                 # 隐私政策
 │   └── src/main/res/                    # 资源文件
@@ -120,7 +118,7 @@ Period-Mobile/
 
 ## 🗃️ 数据库设计
 
-### PeriodRecord 表（版本 4）
+### PeriodRecord 表（版本 5）
 | 字段 | 类型 | 说明 |
 |------|------|------|
 | id | Int | 主键，自增 |

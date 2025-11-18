@@ -7,35 +7,25 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 /*
- * passing arguments for Room (persistence library) to build the database
- * passing Dates class, version corresponds ot Dates class configuration
- * and requires uninstalling app from emulator when changed
+ * Room database configuration
+ * Version 4: Using PeriodRecord for calendar-based tracking
+ * Old Dates table removed
  */
-@Database(entities = [Dates::class, PeriodRecord::class], version = 4, exportSchema = false)
-//
+@Database(entities = [PeriodRecord::class], version = 5, exportSchema = false)
 @TypeConverters(DatesConverter::class)
-// extends RoomDatabase class (built-in class)
 abstract class DatesDatabase : RoomDatabase() {
-    // function which returns the DAO (make database aware of DAO's existence)
-    abstract fun datesDao(): DatesDao
     abstract fun periodRecordDao(): PeriodRecordDao
 
     companion object {
-        // ensures changes made to Instance (database) are harmonized across all threads
         @Volatile
-        // variable keeps reference to database, when created, so single instance opened at a time
         private var Instance: DatesDatabase? = null
 
-        // function which returns database
+        /**
+         * 获取数据库单例
+         * 使用 synchronized 防止多线程同时访问
+         */
         fun getDatabase(context: Context): DatesDatabase {
-            /*
-             * synchronized keyword prevents multiple threads from accessing database at once
-             * avoids race condition, so database is only initialized once
-             * either returns Instance (database) or if null, initializes it (elvis operator)
-             * this refers to the companion object
-             */
             return Instance ?: synchronized(this) {
-                // building the database instance
                 Room.databaseBuilder(context, DatesDatabase::class.java, "dates_database")
                     .fallbackToDestructiveMigration(true)
                     .build().also { Instance = it }

@@ -502,6 +502,7 @@ fun CalendarLegend() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
+
                 LegendItem(
                     color = Color(0xFFE1BEE7),
                     text = "卵泡期",
@@ -514,19 +515,7 @@ fun CalendarLegend() {
                     modifier = Modifier.weight(1f)
                 )
                 
-                LegendItem(
-                    color = Color(0xFFC5E1A5),
-                    text = "黄体期",
-                    modifier = Modifier.weight(1f)
-                )
-            }
-            
-            Spacer(modifier = Modifier.height(8.dp))
-            
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
+                /*
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.weight(1f)
@@ -541,8 +530,25 @@ fun CalendarLegend() {
                         fontSize = 13.sp,
                         color = Color.DarkGray
                     )
-                }
+                } */
                 
+                Spacer(modifier = Modifier.weight(1f))
+
+            }
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+
+                LegendItem(
+                    color = Color(0xFFC5E1A5),
+                    text = "黄体期",
+                    modifier = Modifier.weight(1f)
+                )
+
                 LegendItem(
                     color = Color(0xFFF8BBD0),
                     text = "预测经期",
