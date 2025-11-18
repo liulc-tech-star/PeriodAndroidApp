@@ -11,13 +11,14 @@ import androidx.room.TypeConverters
  * passing Dates class, version corresponds ot Dates class configuration
  * and requires uninstalling app from emulator when changed
  */
-@Database(entities = [Dates::class], version = 3, exportSchema = false)
+@Database(entities = [Dates::class, PeriodRecord::class], version = 4, exportSchema = false)
 //
 @TypeConverters(DatesConverter::class)
 // extends RoomDatabase class (built-in class)
 abstract class DatesDatabase : RoomDatabase() {
     // function which returns the DAO (make database aware of DAO's existence)
     abstract fun datesDao(): DatesDao
+    abstract fun periodRecordDao(): PeriodRecordDao
 
     companion object {
         // ensures changes made to Instance (database) are harmonized across all threads
@@ -36,7 +37,7 @@ abstract class DatesDatabase : RoomDatabase() {
             return Instance ?: synchronized(this) {
                 // building the database instance
                 Room.databaseBuilder(context, DatesDatabase::class.java, "dates_database")
-                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration(true)
                     .build().also { Instance = it }
             }
         }

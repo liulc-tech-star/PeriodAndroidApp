@@ -47,6 +47,7 @@ class MainActivity : ComponentActivity() {
      * why use laneinit in this context?
      */
     private lateinit var datesDao: DatesDao
+    private lateinit var periodRecordDao: com.example.period_app_01.data.PeriodRecordDao
     /*
      * overrides onCreate method as defined in ComponentActivity class
      * onCreate initializes an activity (e.g. initializing UI, preparing data, etc.)
@@ -62,6 +63,7 @@ class MainActivity : ComponentActivity() {
         val database = DatesDatabase.getDatabase(applicationContext)
         //
         datesDao = database.datesDao()
+        periodRecordDao = database.periodRecordDao()
 
         // 检查是否首次启动
         val sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
@@ -91,7 +93,8 @@ class MainActivity : ComponentActivity() {
                         EnterDate(
                             messageDate = resources.getString(R.string.enter_date),
                             modifier = Modifier.padding(innerPadding),
-                            datesDao = datesDao
+                            datesDao = datesDao,
+                            periodRecordDao = periodRecordDao
                         )
                     }
                 }
