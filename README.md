@@ -26,7 +26,7 @@ PeriodAndroidApp 是一款完全离线的 Android 经期跟踪应用，提供智
 
 ## 截图
 
-> *待添加应用截图*
+> ![alt text](image.png)
 
 ## 技术栈
 
@@ -158,9 +158,8 @@ lutealPhase = [ovulationPhase.end+1, nextPeriod-1]
 - 所有计算均在设备本地完成
 - 不收集、不上传、不共享任何个人数据
 
-## 路线图
+## 功能
 
-### ✅ 已完成
 
 - [x] 日历式交互界面
 - [x] 经期记录（开始/结束/删除）
@@ -171,14 +170,6 @@ lutealPhase = [ovulationPhase.end+1, nextPeriod-1]
 - [x] 多周期历史显示
 - [x] Material 3 UI
 
-### 🚧 计划中
-
-- [ ] 症状记录（痛经、情绪等）
-- [ ] 数据导出/导入
-- [ ] 本地提醒通知
-- [ ] 统计图表与报告
-- [ ] 深色模式
-- [ ] 多语言支持（英语、日语等）
 
 ## 贡献
 
